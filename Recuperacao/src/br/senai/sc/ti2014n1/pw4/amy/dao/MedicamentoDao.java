@@ -26,53 +26,7 @@ public class MedicamentoDao extends Dao{
 		
 	}
 	
-	private void inserir(Medicamento medicamento) throws Exception {
-		try {
-			PreparedStatement ps = getConnection().prepareStatement(INSERT);
-			ps.setString(1, medicamento.getNome());
-			ps.setString(2, medicamento.getDosagem());
-			ps.setString(3, medicamento.getIntervalo());
-			ps.setString(4, medicamento.getDuracao());
-			
-			ps.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Exception("Erro ao tentar cadastrar seu medicamento.");
-		}
-	}
 	
-	
-	
-	private void alterar(Medicamento medicamento){
-		try {
-			PreparedStatement ps = getConnection().prepareStatement(UPDATE);
-			ps.setString(1, medicamento.getNome());
-			ps.setString(2, medicamento.getDosagem());
-			ps.setString(3, medicamento.getIntervalo());
-			ps.setString(4, medicamento.getDuracao());
-			ps.setLong(5, medicamento.getId());
-			
-			ps.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Erro ao executar o update" + e);
-		}
-	}
-	
-	public void excluir (Long id) throws Exception{
-		try {
-			PreparedStatement ps = getConnection().prepareStatement(DELETE);
-			ps.setLong(1, id);
-			ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Erro ao executar o delete" + e);
-			throw new Exception("Erro ao tentar excluir.");
-		}
-	}
 	
 	public List<Medicamento> listarTodos(){
 		List<Medicamento> medicamentos = new ArrayList<Medicamento>();

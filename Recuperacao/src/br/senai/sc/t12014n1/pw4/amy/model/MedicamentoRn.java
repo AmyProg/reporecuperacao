@@ -30,16 +30,6 @@ public class MedicamentoRn {
 		dao.salvar(medicamento);
 	}
 
-	public List<Medicamento> listar() {
-		return dao.listarTodos();
-	}
 	
-	public Medicamento buscarPorId(Long id){
-		return dao.buscaPorId(id); 
-	}
-	
-	public void excluir (Long id) throws Exception{
-		dao.excluir(id);
-	}
 	
 }

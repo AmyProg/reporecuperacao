@@ -21,13 +21,7 @@ public class MedicamentoBn {
 		medicamento = new Medicamento();
 	}
 
-	public List<Medicamento> getMedicamentos() {
-		if (medicamentos == null) {
-			medicamentos = rn.listar();
-		}
-		return medicamentos;
-	}
-
+	
 	public void setMedicamentos(List<Medicamento> medicamentos) {
 		this.medicamentos = medicamentos;
 	}
@@ -50,20 +44,5 @@ public class MedicamentoBn {
 		return "listMedicamentos";
 	}
 	
-	public String excluir(String idParam){
-		Long id = Long.parseLong(idParam);
-		try {
-			rn.excluir(id);
-			medicamentos = null;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-
-	public String editar(String idParam){
-		Long id = Long.parseLong(idParam);
-		medicamento = rn.buscarPorId(id);
-		return "cadMedicamentos";
-	}
+	
 }
