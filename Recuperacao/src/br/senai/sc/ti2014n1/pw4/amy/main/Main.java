@@ -14,6 +14,18 @@ public class Main {
 
 	
 
+	public static void editar() {
+		Medicamento medicamento = medicamentoRn.buscarPorId(1L);
+		medicamento.setNome(medicamento.getNome().concat(" A."));
+		try {
+			medicamentoRn.salvar(medicamento);
+			System.out.println("Salvo");
+		} catch (Exception e) {
+			System.out.println("Erro ao salvar: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
 	private static void buscarPorId() {
 		mostrar(medicamentoRn.buscarPorId(2L));
 	}

@@ -51,4 +51,10 @@ public class MedicamentoBn {
 	}
 	
 	
+
+	public String editar(String idParam){
+		Long id = Long.parseLong(idParam);
+		medicamento = rn.buscarPorId(id);
+		return "cadMedicamentos";
+	}
 }

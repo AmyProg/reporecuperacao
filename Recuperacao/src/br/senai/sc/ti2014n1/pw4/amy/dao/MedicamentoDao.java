@@ -26,10 +26,40 @@ public class MedicamentoDao extends Dao{
 		
 	}
 	
+	private void inserir(Medicamento medicamento) throws Exception {
+		try {
+			PreparedStatement ps = getConnection().prepareStatement(INSERT);
+			ps.setString(1, medicamento.getNome());
+			ps.setString(2, medicamento.getDosagem());
+			ps.setString(3, medicamento.getIntervalo());
+			ps.setString(4, medicamento.getDuracao());
+			
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Erro ao tentar cadastrar seu medicamento.");
+		}
+	}
 	
 	
 	
-	
+	private void alterar(Medicamento medicamento){
+		try {
+			PreparedStatement ps = getConnection().prepareStatement(UPDATE);
+			ps.setString(1, medicamento.getNome());
+			ps.setString(2, medicamento.getDosagem());
+			ps.setString(3, medicamento.getIntervalo());
+			ps.setString(4, medicamento.getDuracao());
+			ps.setLong(5, medicamento.getId());
+			
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao executar o update" + e);
+		}
+	}
 	
 	
 	
@@ -56,5 +86,26 @@ public class MedicamentoDao extends Dao{
 	
 	
 			
+	public Medicamento buscaPorId(Long id){
+		try {
+			PreparedStatement ps = getConnection().prepareStatement(SELECT_ID);
+			ps.setLong(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()){
+				Medicamento medicamento = new Medicamento();
+				medicamento.setNome(rs.getString("nome"));
+				medicamento.setDosagem(rs.getString("dosagem"));
+				medicamento.setIntervalo(rs.getString("intervalo"));
+				medicamento.setDuracao(rs.getString("duracao"));
+				medicamento.setId(rs.getLong("id"));
+				return medicamento;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao executar o select de medicamentos." + e);
+		}
+		return null;
+	}
 	
 }
