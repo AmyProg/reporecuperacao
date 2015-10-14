@@ -61,7 +61,18 @@ public class MedicamentoDao extends Dao{
 		}
 	}
 	
-	
+	public void excluir (Long id) throws Exception{
+		try {
+			PreparedStatement ps = getConnection().prepareStatement(DELETE);
+			ps.setLong(1, id);
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao executar o delete" + e);
+			throw new Exception("Erro ao tentar excluir.");
+		}
+	}
 	
 	public List<Medicamento> listarTodos(){
 		List<Medicamento> medicamentos = new ArrayList<Medicamento>();

@@ -12,7 +12,15 @@ public class Main {
 		medicamentoRn = new MedicamentoRn();
 	}
 
-	
+	private static void excluir() {
+		try {
+			medicamentoRn.excluir(3L);
+			System.out.println("Excluido");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 	public static void editar() {
 		Medicamento medicamento = medicamentoRn.buscarPorId(1L);

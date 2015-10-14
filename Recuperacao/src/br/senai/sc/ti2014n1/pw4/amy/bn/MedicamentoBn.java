@@ -50,7 +50,16 @@ public class MedicamentoBn {
 		return "listMedicamentos";
 	}
 	
-	
+	public String excluir(String idParam){
+		Long id = Long.parseLong(idParam);
+		try {
+			rn.excluir(id);
+			medicamentos = null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
 
 	public String editar(String idParam){
 		Long id = Long.parseLong(idParam);
