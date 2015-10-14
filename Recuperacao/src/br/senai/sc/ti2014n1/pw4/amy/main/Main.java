@@ -12,7 +12,7 @@ public class Main {
 		medicamentoRn = new MedicamentoRn();
 	}
 
-
+	
 
 	private static void buscarPorId() {
 		mostrar(medicamentoRn.buscarPorId(2L));
@@ -32,7 +32,20 @@ public class Main {
 		System.out.println("------------------------------");
 	}
 
-
+	private static void inserirUm() {
+		Medicamento medicamento = new Medicamento();
+		medicamento.setNome("Joao");
+		medicamento.setDosagem("10 gotas ou 2 comprimidos");
+		medicamento.setIntervalo("De 8 em 8 horas");
+		medicamento.setDuracao("4 horas");
+		try {
+			medicamentoRn.salvar(medicamento);
+			System.out.println("Salvo");
+		} catch (Exception e) {
+			System.out.println("Erro ao salvar: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 	private static void conectar() {
 		Dao dao = new Dao() {

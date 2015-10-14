@@ -21,7 +21,13 @@ public class MedicamentoBn {
 		medicamento = new Medicamento();
 	}
 
-	
+	public List<Medicamento> getMedicamentos() {
+		if (medicamentos == null) {
+			medicamentos = rn.listar();
+		}
+		return medicamentos;
+	}
+
 	public void setMedicamentos(List<Medicamento> medicamentos) {
 		this.medicamentos = medicamentos;
 	}
