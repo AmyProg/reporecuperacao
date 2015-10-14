@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Medicamentos</title>
+</head>
+
+<h:body>
+
+	<div id="content">
+		<h1>
+			<small>Cadastrar novo Medicamento</small>
+		</h1>
+		<h:form>
+			<h:panelGroup rendered="#{not empty medicamentoBn.medicamento.id}">
+				<div>
+					<h:outputLabel value="Código: " />
+					<h:inputText readonly="true" value="#{medicamentoBn.medicamento.id}" />
+				</div>
+			</h:panelGroup>
+			<h:inputHidden value="#{medicamentoBn.medicamento.id}" />
+			<div>
+					<h:outputLabel value="Nome: " />
+					<h:inputText value="#{medicamentoBn.medicamento.nome}" />
+				</div>
+				<div>
+					<h:outputLabel value="Dosagem: " />
+					<h:inputText value="#{medicamentoBn.medicamento.dosagem}" />
+				</div>
+				<div>
+					<h:outputLabel value="Intervalo: " />
+					<h:inputText value="#{medicamentoBn.medicamento.intervalo}" />
+				</div>
+				<div>
+					<h:outputLabel value="Duração" />
+					<h:inputText value="#{medicamentoBn.medicamento.duracao}" />
+				</div>
+				<button type="reset">Restaurar</button>
+				<h:commandButton value="Salvar" action="#{medicamentoBn.salvar()}" />
+			
+		</h:form>
+
+	</div>
+
+</h:body>
+
+</html>
